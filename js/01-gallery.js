@@ -28,11 +28,14 @@ function onClickImg(e) {
 
   const instance = basicLightbox.create(`<img src="${e.target.dataset.source}" width="800" height="600">`);
   window.addEventListener('keydown', onCloseModal);
-  
+
   instance.show();
 
   function onCloseModal(e) {
-  if (e.code === "Escape")
+    if (e.code !== "Escape") {
+      return
+    };
+    
     instance.close()
     window.removeEventListener('keydown', onCloseModal);
   };
