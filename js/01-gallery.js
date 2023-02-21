@@ -28,7 +28,6 @@ function onClickImg(e) {
 
   const instance = basicLightbox.create(`<img src="${e.target.dataset.source}" width="800" height="600">`);
   window.addEventListener('keydown', onCloseModal);
-
   instance.show();
 
   function onCloseModal(e) {
@@ -39,5 +38,10 @@ function onClickImg(e) {
     instance.close()
     window.removeEventListener('keydown', onCloseModal);
   };
+
+  instance.element().addEventListener('click', () => {
+    instance.close();
+    window.removeEventListener('keydown', onCloseModal);
+  });
 };
 

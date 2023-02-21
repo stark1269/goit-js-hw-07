@@ -3,9 +3,7 @@ import { galleryItems } from './gallery-items.js';
 
 const gallery = document.querySelector('.gallery');
 
-const murkup = [];
-
-galleryItems.map(item => {
+const murkup = galleryItems.map(item => {
   const linkEl = document.createElement('a');
   linkEl.classList.add('gallery__item');
   linkEl.href = item.original;
@@ -17,7 +15,7 @@ galleryItems.map(item => {
   imgEl.title = item.description;
 
   linkEl.append(imgEl)
-  murkup.push(linkEl)
+  return linkEl;
 });
 
 gallery.append(...murkup);
